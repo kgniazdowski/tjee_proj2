@@ -16,4 +16,9 @@ public class BikeController {
 	public void AddBike(Bike bike) {
 		entityManager.persist(bike);
 	}
+	
+	public void DeleteBike(int id) {
+		entityManager.remove(entityManager.find(Bike.class, id));
+
+	}
 }

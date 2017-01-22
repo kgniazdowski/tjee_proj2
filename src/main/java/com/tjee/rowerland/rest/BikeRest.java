@@ -3,12 +3,13 @@ package com.tjee.rowerland.rest;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.tjee.rowerland.controller.BikeController;
 import com.tjee.rowerland.model.Bike;
 import com.tjee.rowerland.service.BikeService;
 
@@ -31,5 +32,14 @@ public class BikeRest {
 		newBike.setWheelSize(bike.getWheelSize());
 		bikeService.AddBike(newBike);
 		return newBike;
+	}
+	
+	@DELETE
+	@Path("/delete/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String DeleteBike(@PathParam("id") int id)
+	{
+		bikeService.DeleteBike(id);
+		return "Usunieto rower o id " + id;
 	}
 }
