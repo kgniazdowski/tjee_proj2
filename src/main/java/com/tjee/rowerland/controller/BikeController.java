@@ -13,12 +13,19 @@ public class BikeController {
 	@PersistenceContext
 	EntityManager entityManager;
 	
-	public void AddBike(Bike bike) {
+	public void AddBike(Bike bike)
+	{
 		entityManager.persist(bike);
 	}
 	
-	public void DeleteBike(int id) {
+	public void DeleteBike(int id)
+	{
 		entityManager.remove(entityManager.find(Bike.class, id));
 
+	}
+	
+	public Bike GetBikeById(int id)
+	{
+		return entityManager.find(Bike.class, id);
 	}
 }

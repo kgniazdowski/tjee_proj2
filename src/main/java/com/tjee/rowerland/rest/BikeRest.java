@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -41,5 +42,13 @@ public class BikeRest {
 	{
 		bikeService.DeleteBike(id);
 		return "Usunieto rower o id " + id;
+	}
+	
+	@GET
+	@Path("/get/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Bike GetBikeById(@PathParam("id") int id)
+	{
+		return bikeService.GetBikeById(id);
 	}
 }

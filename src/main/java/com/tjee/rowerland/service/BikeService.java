@@ -21,4 +21,9 @@ public class BikeService {
 	{
 		bikeController.DeleteBike(id);
 	}
+	
+	public Bike GetBikeById(int id)
+	{
+		return bikeController.GetBikeById(id);
+	}
 }
