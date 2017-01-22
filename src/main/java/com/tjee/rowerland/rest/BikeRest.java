@@ -27,8 +27,8 @@ public class BikeRest {
 	{
 		Bike newBike = new Bike();
 		newBike.setName(bike.getName());
-		/*newBike.setPrice(bike.getPrice());
-		newBike.setWheelSize(bike.getWheelSize());*/
+		newBike.setPrice(bike.getPrice());
+		newBike.setWheelSize(bike.getWheelSize());
 		bikeService.AddBike(newBike);
 		return newBike;
 	}

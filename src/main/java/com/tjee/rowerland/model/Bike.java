@@ -10,8 +10,8 @@ public class Bike {
 	
 	int id;
     String name;
-    //double price;
-    //double wheelSize;
+    double price;
+    double wheelSize;
     //Producer producer;
     
     @Id
@@ -28,7 +28,7 @@ public class Bike {
 	public void setName(String name) {
 		this.name = name;
 	}
-	/*public double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
@@ -39,6 +39,6 @@ public class Bike {
 	}
 	public void setWheelSize(double wheelSize) {
 		this.wheelSize = wheelSize;
-	}*/
+	}
 
 }
