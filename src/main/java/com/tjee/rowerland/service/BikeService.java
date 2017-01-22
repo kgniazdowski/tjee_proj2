@@ -1,5 +1,7 @@
 package com.tjee.rowerland.service;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -25,5 +27,10 @@ public class BikeService {
 	public Bike GetBikeById(int id)
 	{
 		return bikeController.GetBikeById(id);
+	}
+	
+	public List<Bike> GetAllBikes()
+	{
+		return bikeController.GetAllBikes();
 	}
 }

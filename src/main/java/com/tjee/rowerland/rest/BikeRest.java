@@ -1,5 +1,7 @@
 package com.tjee.rowerland.rest;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -50,5 +52,13 @@ public class BikeRest {
 	public Bike GetBikeById(@PathParam("id") int id)
 	{
 		return bikeService.GetBikeById(id);
+	}
+	
+	@GET
+	@Path("/getAll")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Bike> GetAllBikes()
+	{
+		return bikeService.GetAllBikes();
 	}
 }

@@ -1,5 +1,7 @@
 package com.tjee.rowerland.controller;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -27,5 +29,11 @@ public class BikeController {
 	public Bike GetBikeById(int id)
 	{
 		return entityManager.find(Bike.class, id);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Bike> GetAllBikes()
+	{
+		return entityManager.createNamedQuery("bike.all").getResultList();
 	}
 }
