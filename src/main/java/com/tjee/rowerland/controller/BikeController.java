@@ -20,6 +20,11 @@ public class BikeController {
 		entityManager.persist(bike);
 	}
 	
+	public void UpdateBike(Bike bike)
+	{
+		entityManager.merge(bike);
+	}
+	
 	public void DeleteBike(int id)
 	{
 		entityManager.remove(entityManager.find(Bike.class, id));

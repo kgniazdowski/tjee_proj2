@@ -19,6 +19,11 @@ public class BikeService {
 		bikeController.AddBike(bike);
 	}
 	
+	public void UpdateBike(Bike bike)
+	{
+		bikeController.UpdateBike(bike);
+	}
+	
 	public void DeleteBike(int id)
 	{
 		bikeController.DeleteBike(id);

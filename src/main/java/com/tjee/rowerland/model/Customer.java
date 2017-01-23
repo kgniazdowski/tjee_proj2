@@ -17,12 +17,6 @@ public class Customer {
 	private Long id;
 	private String name;
 	private String surname;
-	private List<Bike> bikeList;
-	
-	public Customer()
-	{
-		bikeList = new ArrayList<>();
-	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,12 +37,5 @@ public class Customer {
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public List<Bike> getBikeList() {
-		return bikeList;
-	}
-	public void setBikeList(List<Bike> bikeList) {
-		this.bikeList = bikeList;
 	}
 }

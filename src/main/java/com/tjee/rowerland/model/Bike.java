@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -17,7 +18,7 @@ public class Bike {
     String name;
     double price;
     double wheelSize;
-    //Producer producer;
+    Customer customer;
     
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,5 +46,11 @@ public class Bike {
 	public void setWheelSize(double wheelSize) {
 		this.wheelSize = wheelSize;
 	}
-
+	@ManyToOne
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 }
