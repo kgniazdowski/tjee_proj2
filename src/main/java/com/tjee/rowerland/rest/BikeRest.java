@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.tjee.rowerland.controller.BikeController;
 import com.tjee.rowerland.model.Bike;
 import com.tjee.rowerland.service.BikeService;
 
@@ -22,7 +23,7 @@ import com.tjee.rowerland.service.BikeService;
 public class BikeRest {
 	
 	@EJB
-	BikeService bikeService;
+	BikeController bikeController;
 
 	@POST
 	@Path("/add")
@@ -34,7 +35,7 @@ public class BikeRest {
 		newBike.setName(bike.getName());
 		newBike.setPrice(bike.getPrice());
 		newBike.setWheelSize(bike.getWheelSize());
-		bikeService.AddBike(newBike);
+		bikeController.AddBike(newBike);
 		return newBike;
 	}
 	
@@ -42,10 +43,15 @@ public class BikeRest {
 	@Path("/edit/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Bike UpdateBike(Bike bike)
+	public Bike UpdateBike(@PathParam("id") int id, Bike bike)
 	{
-		bikeService.UpdateBike(bike);
-		return bike;
+		Bike oldBike = bikeController.GetBikeById(id);
+		oldBike.setName(bike.getName());
+		oldBike.setPrice(bike.getPrice());
+		oldBike.setWheelSize(bike.getWheelSize());
+		oldBike.setCustomer(bike.getCustomer());
+		bikeController.UpdateBike(oldBike);
+		return oldBike;
 	}
 	
 	@DELETE
@@ -53,7 +59,7 @@ public class BikeRest {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String DeleteBike(@PathParam("id") int id)
 	{
-		bikeService.DeleteBike(id);
+		bikeController.DeleteBike(id);
 		return "Usunieto rower o id " + id;
 	}
 	
@@ -62,7 +68,7 @@ public class BikeRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Bike GetBikeById(@PathParam("id") int id)
 	{
-		return bikeService.GetBikeById(id);
+		return bikeController.GetBikeById(id);
 	}
 	
 	@GET
@@ -70,6 +76,6 @@ public class BikeRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Bike> GetAllBikes()
 	{
-		return bikeService.GetAllBikes();
+		return bikeController.GetAllBikes();
 	}
 }
