@@ -34,6 +34,10 @@ public class RentalRest {
 		if (customer != null)
 		{
 			Bike bike = bikeController.GetBikeById(bikeId);
+			if (bike == null)
+			{
+				return "Nie ma roweru o podanym Id";
+			}
 			bike.setCustomer(customer);
 			bikeController.UpdateBike(bike);
 			return "Rower został wypozyczony";
