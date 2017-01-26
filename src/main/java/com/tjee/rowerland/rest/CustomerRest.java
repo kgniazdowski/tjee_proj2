@@ -73,4 +73,12 @@ public class CustomerRest {
 	{
 		return customerController.GetAllCustomers();
 	}
+	
+	@GET
+	@Path("/getBySurname/{surname}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Customer> GetCustomerBySurname(@PathParam("surname") String surname)
+	{
+		return customerController.GetCustomerBySurname(surname);
+	}
 }

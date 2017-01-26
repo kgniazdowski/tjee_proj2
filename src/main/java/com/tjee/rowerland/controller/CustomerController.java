@@ -40,4 +40,10 @@ public class CustomerController {
 	{
 		return entityManager.createNamedQuery("customer.all").getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Customer> GetCustomerBySurname(String surname)
+	{
+		return entityManager.createNamedQuery("customer.bySurname").setParameter("surname", surname).getResultList();
+	}
 }
