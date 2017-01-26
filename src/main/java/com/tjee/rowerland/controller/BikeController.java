@@ -41,4 +41,10 @@ public class BikeController {
 	{
 		return entityManager.createNamedQuery("bike.all").getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Bike> GetNotRentedBikes()
+	{
+		return entityManager.createNamedQuery("bike.notRented").getResultList();
+	}
 }

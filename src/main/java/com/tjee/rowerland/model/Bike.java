@@ -10,7 +10,8 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "bike.all", query = "select b from Bike b")
+	@NamedQuery(name = "bike.all", query = "select b from Bike b"),
+	@NamedQuery(name = "bike.notRented", query = "select b from Bike b where b.customer IS NULL")
 })
 public class Bike {
 	
