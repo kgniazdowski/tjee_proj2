@@ -51,4 +51,12 @@ public class RentalRest {
 	{
 		return bikeController.GetNotRentedBikes();
 	}
+	
+	@GET
+	@Path("bike/byCustomer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Bike> GetBikesOfCustomer(@PathParam("id") int id)
+	{
+		return bikeController.GetBikesOfCustomer(id);
+	}
 }

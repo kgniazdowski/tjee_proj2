@@ -8,12 +8,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.tjee.rowerland.model.Bike;
+import com.tjee.rowerland.model.Customer;
 
 @Stateless
 public class BikeController {
 	
 	@PersistenceContext
 	EntityManager entityManager;
+	
+	@EJB
+	CustomerController customerController;
 	
 	public void AddBike(Bike bike)
 	{
@@ -46,5 +50,12 @@ public class BikeController {
 	public List<Bike> GetNotRentedBikes()
 	{
 		return entityManager.createNamedQuery("bike.notRented").getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Bike> GetBikesOfCustomer(int customerId)
+	{
+		Customer customer = customerController.GetCustomerById(customerId);
+		return entityManager.createNamedQuery("bike.byCustomer").setParameter("cust", customer).getResultList();
 	}
 }
